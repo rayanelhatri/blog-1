@@ -3,22 +3,44 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
-
-        <h2>
-            Tu t'appelles {{ name }}
-        </h2>
-
-        {% if city is defined and city is not empty %}
-            <p>
-                Vous êtes sur la ville de {{ city }}
-            </p>
-        {% endif %}
-    </div>
-
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
+
+    <div class="example-wrapper">
+        {% if mycontact is defined and mycontact is not empty %}
+            <h1>Mon contact actuel</h1>
+            <ul>
+                <li>Nom = {{ mycontact.name }}</li>
+                <li>Prénom = {{ mycontact.firstname }}</li>
+                <li>Age = {{ mycontact.age }}</li>
+                {% if mycontact.newsletter == true %}
+                    <li>Newsletter : <input type="checkbox" checked disabled></li>
+                {% elseif mycontact.newsletter == false %}
+                    <li>Newsletter : <input type="checkbox" disabled></li>
+                {% endif %}
+            </ul>
+        {% else %}
+            <h1>Ajouter un nouveau contact</h1>
+            {{ form(form) }}
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <h1>Liste des contacts actuels ({{ contacts | length }})</h1>
+        {% for contact in contacts %}
+            <ul>
+                <li>Nom = {{ contact.name }}</li>
+                <li>Prénom = {{ contact.firstname }}</li>
+                <li>Age = {{ contact.age }}</li>
+                {% if contact.newsletter == true %}
+                    <li>Newsletter : <input type="checkbox" checked disabled></li>
+                {% elseif contact.newsletter == false %}
+                    <li>Newsletter : <input type="checkbox" disabled></li>
+                {% endif %}
+                <li><a href="{{ path('contactId', {id: contact.id}) }}">Lien vers la demande</a> </li>
+            </ul>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -14,30 +14,16 @@
     {% endblock %}
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li>
-                <a href="{{ path('home') }}">Accueil</a>
-            </li>
-            <li>
-                <a href="{{ path('blog') }}">Blog</a>
-            </li>
-            <li>
-                <a href="{{ path('contact') }}">Contact</a>
-                <ul>
-                    <li>
-                        <a href="{{ path('contact', {city: "Paris"}) }}">Contacter Paris</a>
-                    </li>
+<nav>
+    <ul>
+        <li><a href="/">Contact Request</a> </li>
+    </ul>
+</nav>
 
-                    <li>
-                        <a href="{{ path('contact', {name: "Alex"}) }}">Contacter ""Alex""</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</header>
-{% block body %}{% endblock %}
+{% block body %}
+    Bloc surchargé
+{% endblock %}
+
+
 </body>
 </html>
