@@ -66,18 +66,6 @@ class Contact
         return $this;
     }
 
-    public function getNewsletter(): ?bool
-    {
-        return $this->newsletter;
-    }
-
-    public function setNewsletter(bool $newsletter): self
-    {
-        $this->newsletter = $newsletter;
-
-        return $this;
-    }
-
     public function getAge(): ?int
     {
         return $this->age;
@@ -89,4 +77,18 @@ class Contact
 
         return $this;
     }
+
+
+    public function getNewsletter(): ?bool
+    {
+        return $this->newsletter;
+    }
+
+    public function setNewsletter(bool $newsletter): self
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
 }
+

@@ -65,6 +65,17 @@ class ContactRequest
 
         return $this;
     }
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
 
     public function getNewsletter(): ?bool
     {
@@ -78,15 +89,5 @@ class ContactRequest
         return $this;
     }
 
-    public function getAge(): ?int
-    {
-        return $this->age;
-    }
 
-    public function setAge(int $age): self
-    {
-        $this->age = $age;
-
-        return $this;
-    }
 }

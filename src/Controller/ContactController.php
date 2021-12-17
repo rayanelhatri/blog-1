@@ -36,7 +36,7 @@ class ContactController extends AbstractController
             $entityManager->persist($form->getData());
             $entityManager->flush();
 
-            dump("Envoyé en DB");
+            dump("Ok en bDD");
         }
 
 
@@ -50,23 +50,20 @@ class ContactController extends AbstractController
     /**
      * @Route("/{id}", name="contactId")
      */
+
     public function login(Request $request, string $id): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
-
-
         if ($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($form->getData());
             $entityManager->flush();
 
-            dump("Envoyé en DB");
+            dump("Ok en BDD");
         }
-
-
         return $this->renderForm('contact/index.html.twig', [
             'contacts' => $this->contactRepository->findAll(),
             'mycontact' => $this->contactRepository->find($id),
